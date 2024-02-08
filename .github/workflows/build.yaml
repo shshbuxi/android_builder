@@ -9,11 +9,15 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: use node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16 # node版本
+          cache: "yarn"
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-          node-version: 16
       - id: get-project
         name: Get project name
         run: echo "::set-output name=PROJECT::$(cat project-to-build)"
